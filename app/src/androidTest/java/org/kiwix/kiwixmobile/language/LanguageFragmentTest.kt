@@ -46,9 +46,8 @@ import org.kiwix.kiwixmobile.utils.StandardActions
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class LanguageFragmentTest {
-  @Rule
-  @JvmField
-  var retryRule = RetryRule()
+  @get:Rule
+  val retryTestRule = RetryRule()
 
   @get:Rule
   val composeTestRule = createComposeRule()
