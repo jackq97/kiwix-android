@@ -56,7 +56,7 @@ fun KiwixAppBar(
   navigationIcon: @Composable () -> Unit,
   actionMenuItems: List<ActionMenuItem> = emptyList(),
   // Optional search bar, used in fragments that require it
-  searchBar: (@Composable () -> Unit)? = null
+  searchBar: (@Composable (Modifier) -> Unit)? = null
 ) {
   KiwixTheme {
     Row(
@@ -67,14 +67,15 @@ fun KiwixAppBar(
       verticalAlignment = Alignment.CenterVertically
     ) {
       navigationIcon()
-      searchBar?.let {
-        // Display the search bar when provided
-        it()
+      searchBar?.let { searchBarComposable ->
+        searchBarComposable(
+          Modifier.weight(1f)
+        )
       } ?: run {
         // Otherwise, show the title
         AppBarTitle(titleId)
+        Spacer(Modifier.weight(1f))
       }
-      Spacer(Modifier.weight(1f))
       ActionMenu(actionMenuItems)
     }
   }
@@ -106,7 +107,8 @@ private fun ActionMenu(actionMenuItems: List<ActionMenuItem>) {
       IconButton(
         enabled = menuItem.isEnabled,
         onClick = menuItem.onClick,
-        modifier = Modifier.testTag(menuItem.testingTag)
+        modifier = Modifier
+          .testTag(menuItem.testingTag)
       ) {
         Icon(
           painter = when (val icon = menuItem.icon) {
