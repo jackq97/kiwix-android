@@ -43,7 +43,7 @@ interface KiwixService {
   @GET("catalog/v2/languages")
   suspend fun getLanguages(): LanguageFeed
 
-  @GET("/kiwix/release/kiwix-android/feed")
+  @GET("kiwix/release/kiwix-android/feed.xml")
   suspend fun getUpdates(): UpdateFeed
 
   /******** Helper class that sets up new services  */
