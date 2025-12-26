@@ -77,5 +77,4 @@ object PreferencesKeys {
   val PREF_IS_FIRST_RUN = booleanPreferencesKey(KiwixDataStore.PREF_IS_FIRST_RUN)
   val IS_PLAY_STORE_BUILD = booleanPreferencesKey(KiwixDataStore.IS_PLAY_STORE_BUILD)
   val PREF_IS_TEST = booleanPreferencesKey(KiwixDataStore.PREF_IS_TEST)
-  val PREF_LATEST_APP_VERSION = stringPreferencesKey(KiwixDataStore.PREF_LATEST_APP_VERSION)
 }

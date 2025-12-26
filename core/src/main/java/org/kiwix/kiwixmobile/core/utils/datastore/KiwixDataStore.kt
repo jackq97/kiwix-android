@@ -376,18 +376,6 @@ class KiwixDataStore @Inject constructor(val context: Context) {
     }
   }
 
-  val latestAppVersion: Flow<String> =
-    context.kiwixDataStore.data.map { prefs ->
-      prefs[PreferencesKeys.PREF_LATEST_APP_VERSION] ?: ""
-    }
-
-  suspend fun setLatestAppVersion(latestAppVersion: String) {
-    context.kiwixDataStore.edit { prefs ->
-      prefs[PreferencesKeys.PREF_LATEST_APP_VERSION] =
-        latestAppVersion
-    }
-  }
-
   val isScanFileSystemDialogShown: Flow<Boolean> =
     context.kiwixDataStore.data.map { pref ->
       pref[PreferencesKeys.PREF_SCAN_FILE_SYSTEM_DIALOG_SHOWN] ?: false
@@ -596,6 +584,5 @@ class KiwixDataStore @Inject constructor(val context: Context) {
     const val KEY_LANGUAGE_ID = "languageId"
     const val PREF_SCAN_FILE_SYSTEM_DIALOG_SHOWN = "prefScanFileSystemDialogShown"
     const val PREF_IS_SCAN_FILE_SYSTEM_TEST = "prefIsScanFileSystemTest"
-    const val PREF_LATEST_APP_VERSION = "pref_latest_app_version"
   }
 }

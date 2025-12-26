@@ -2605,11 +2605,9 @@ abstract class CoreReaderFragment :
   private suspend fun fetchUpdate() {
     // BuildConfig.VERSION_NAME
     val currentVersion = VersionId("3.9.11")
-    kiwixDataStore?.latestAppVersion?.collect {
-      val available = VersionId(it)
-      if (available > currentVersion) {
-        readerScreenState.update { copy(shouldShowUpdatePopup = true) }
-      }
+    val available = VersionId("3.9.11")
+    if (available > currentVersion) {
+      readerScreenState.update { copy(shouldShowUpdatePopup = true) }
     }
   }
 
