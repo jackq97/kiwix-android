@@ -52,7 +52,7 @@ import org.kiwix.kiwixmobile.core.main.NOTES_FRAGMENT
 import org.kiwix.kiwixmobile.core.main.READER_FRAGMENT
 import org.kiwix.kiwixmobile.core.main.SEARCH_FRAGMENT
 import org.kiwix.kiwixmobile.core.main.SETTINGS_FRAGMENT
-import org.kiwix.kiwixmobile.core.main.UPDATE_SCREEN
+import org.kiwix.kiwixmobile.core.main.UPDATE_FRAGMENT
 import org.kiwix.kiwixmobile.core.main.ZIM_FILE_URI_KEY
 import org.kiwix.kiwixmobile.core.main.ZIM_HOST_FRAGMENT
 import org.kiwix.kiwixmobile.core.main.ZIM_HOST_NAV_DEEP_LINK
@@ -72,7 +72,7 @@ import org.kiwix.kiwixmobile.nav.destination.library.local.LocalLibraryFragment
 import org.kiwix.kiwixmobile.nav.destination.library.online.OnlineLibraryFragment
 import org.kiwix.kiwixmobile.nav.destination.reader.KiwixReaderFragment
 import org.kiwix.kiwixmobile.settings.KiwixSettingsFragment
-import org.kiwix.kiwixmobile.update.UpdateScreen
+import org.kiwix.kiwixmobile.update.UpdateFragment
 import org.kiwix.kiwixmobile.webserver.ZimHostFragment
 
 @Suppress("LongMethod")
@@ -92,8 +92,10 @@ fun KiwixNavGraph(
         KiwixReaderFragment()
       }
     }
-    composable(route = KiwixDestination.Update.route) { backStackEntry ->
-      UpdateScreen()
+    composable(route = KiwixDestination.Update.route) {
+      FragmentContainer(R.id.readerFragmentContainer) {
+        UpdateFragment()
+      }
     }
     composable(
       route = KiwixDestination.Library.route,
@@ -264,7 +266,7 @@ sealed class KiwixDestination(val route: String) {
       "$LOCAL_LIBRARY_FRAGMENT?$ZIM_FILE_URI_KEY=${Uri.encode(zimFileUri)}"
   }
 
-  object Update : KiwixDestination(UPDATE_SCREEN)
+  object Update : KiwixDestination(UPDATE_FRAGMENT)
   object Downloads : KiwixDestination(DOWNLOAD_FRAGMENT)
   object Bookmarks : KiwixDestination(BOOKMARK_FRAGMENT)
   object Notes : KiwixDestination(NOTES_FRAGMENT)
