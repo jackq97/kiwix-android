@@ -25,7 +25,7 @@ import dagger.multibindings.IntoMap
 import org.kiwix.kiwixmobile.core.di.ViewModelKey
 import org.kiwix.kiwixmobile.core.di.modules.CoreViewModelModule
 import org.kiwix.kiwixmobile.language.viewmodel.LanguageViewModel
-import org.kiwix.kiwixmobile.update.UpdateViewModel
+import org.kiwix.kiwixmobile.update.viewmodel.UpdateViewModel
 import org.kiwix.kiwixmobile.zimManager.ZimManageViewModel
 
 @Module(includes = [CoreViewModelModule::class])
