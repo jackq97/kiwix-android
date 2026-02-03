@@ -1901,7 +1901,7 @@ abstract class CoreReaderFragment :
     }
     lifecycleScope.launch {
       donationDialogHandler?.attemptToShowDonationPopup()
-      updateDialogHandler?.attemptToShowDonationPopup()
+      updateDialogHandler?.attemptToShowUpdatePopup()
     }
   }
 
